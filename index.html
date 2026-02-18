@@ -3,25 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watch Full Video</title>
+    <title>Viral Video</title>
 
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="player">
     <meta name="twitter:site" content="@TechnicalAtik4">
     <meta name="twitter:title" content="Viral Video: Click to Watch Full Video 🔴">
     <meta name="twitter:description" content="Exclusive content. Watch before it gets deleted.">
-    
     <meta name="twitter:image" content="https://res.cloudinary.com/duqxxqpwo/video/upload/v1/Screen_Recording_20260217_191601_o4pecp.jpg">
+    
+    <meta name="twitter:player" content="https://mimakhtar355-dotcom.github.io/my-video-card/index.html">
+    <meta name="twitter:player:width" content="1280">
+    <meta name="twitter:player:height" content="720">
 
-    <meta property="og:title" content="Viral Video: Click to Watch">
-    <meta property="og:image" content="https://res.cloudinary.com/duqxxqpwo/video/upload/v1/Screen_Recording_20260217_191601_o4pecp.jpg">
-    <meta property="og:type" content="website">
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+        
+        /* ভিডিওর ওপরে একটি অদৃশ্য পর্দা (ক্লিক করলেই লিংকে নিবে) */
+        #click-layer {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 100; /* ভিডিওর ওপরে থাকবে */
+            cursor: pointer;
+            background: rgba(0,0,0,0); /* অদৃশ্য */
+        }
 
-    <script>
-        // ইউজার লিংকে ক্লিক করলেই তাকে আসল জায়গায় পাঠিয়ে দেবে
-        window.location.href = "https://google.com"; // 🔴 আপনার আসল লিংক এখানে দিন
-    </script>
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-    <p>Loading video...</p>
+
+    <a href="https://google.com" target="_blank" id="click-layer"></a>
+
+    <video autoplay muted loop playsinline>
+        <source src="https://res.cloudinary.com/duqxxqpwo/video/upload/Screen_Recording_20260217_191601_o4pecp.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        // ভিডিও লোড হওয়ার সাথে সাথে প্লে হবে
+        document.addEventListener('DOMContentLoaded', () => {
+            const v = document.querySelector('video');
+            v.play().catch(e => console.log('Autoplay blocked'));
+        });
+    </script>
+
 </body>
 </html>
